@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { useLocation } from 'react-router';
+import Toggle from './Toggle';
 
 const NavContainer = styled.nav`
     width: 100vw;
@@ -40,6 +41,12 @@ const NavLists = styled.ul`
     grid-template-columns: repeat(7, 13%);
     grid-gap: 1.5%;
     align-items: center;
+    @media screen and (max-width: 1200px) {
+        grid-template-columns: 13% 13% 13% 13% 13% 13% 20%;
+    }
+    @media ${({theme}) => theme.device.mobile} {
+        display: none;
+    }
 `;
 
 const NavList = styled.li`
@@ -60,10 +67,16 @@ const ListLink = styled(Link)`
     }
     padding-bottom: 5px;
     border-bottom: 2px solid ${({current, theme}) => current ? `${theme.color.lightGray}` : "transparent"};
+    @media screen and (max-width: 992px) {
+        font-size: 15px;
+    }
 `;
 
 const SignLink = styled(ListLink)`
     color: ${({theme}) => theme.color.black};
+    @media screen and (max-width: 992px) {
+        font-size: 15px;
+    }
 `;
 
 function NavBar () {
@@ -76,7 +89,7 @@ function NavBar () {
                 </NavLogo>
                 <NavLists>
                     <NavList>
-                        <ListLink to="/10generation"current={pathname === "/10generation"}> 10대에게 </ListLink>
+                        <ListLink to="/10generation" current={pathname === "/10generation"}> 10대에게 </ListLink>
                     </NavList>
                     <NavList>
                         <ListLink to="/20generation" current={pathname === "/20generation"}> 20대에게 </ListLink>
@@ -97,6 +110,7 @@ function NavBar () {
                         <SignLink to="/"> 로그인/회원가입 </SignLink>
                     </NavList>
                 </NavLists>
+                <Toggle />
             </NavBox>
         </NavContainer>
     );
