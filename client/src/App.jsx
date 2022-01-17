@@ -1,17 +1,20 @@
 import React from "react";
 import Intro from "./pages/Intro";
-import MainPage from "./pages/mainPage";
-import SignupPage from "./pages/signupPage";
+import MainPage from "./pages/MainPage";
+import SignupPage from "./pages/SignupPage";
 import PostsPage from "./pages/PostsPage";
 import PostVeiw from "./pages/PostVeiw";
 import PostCreate from "./pages/PostCreate";
-import PostEdit from "./pages/postEdit";
-import MyPage from "./pages/myPage";
-import LoadingPage from "./pages/loadingPage";
+import PostEdit from "./pages/PostEdit";
+import MyPage from "./pages/MyPage";
+import LoadingPage from "./pages/LoadingPage";
 import NotFound from "./pages/NotFound";
 import { Routes, Route } from "react-router-dom";
 
 function App() {
+
+  const loginId = "test"
+
   return (
     <>
       <Routes>
