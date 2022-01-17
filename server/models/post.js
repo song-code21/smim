@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class Post extends Model {
+  class post extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,18 +11,23 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Post.hasMany(models.Comment, { foreignKey: "id", sourceKey: "post_id" });
-      Post.hasMany(models.post_tag, { foreignKey: "id", sourceKey: "post_id" });
-      Post.hasMany(models.Like, {foreignKey: "id", sourceKey: "target_id"});
-      Post.belongsTo(models.User, {
-        foreignKey: "id",
-        targetKey: "user_id",
+      models.post.hasMany(models.comment, { foreignKey: "posrt_id", sourceKey: "id" });
+      models.post.hasMany(models.post_tag, {
+        foreignKey: "post_id",
+        sourceKey: "id",
+      });
+      models.post.hasMany(models.like, {
+        foreignKey: "target_id",
+        sourceKey: "id",
+      });
+      models.post.belongsTo(models.user, {
+        foreignKey: "user_id",
+        targetKey: "id",
       });
     }
   }
-  Post.init(
+  post.init(
     {
-      user_id: DataTypes.INTEGER,
       title: DataTypes.STRING,
       textcontent: DataTypes.TEXT,
       view: DataTypes.INTEGER,
@@ -33,5 +38,5 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "post",
     }
   );
-  return Post;
+  return post;
 };
