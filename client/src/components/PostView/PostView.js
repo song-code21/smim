@@ -1,8 +1,7 @@
 import React from 'react';
 
-export default function PostVeiw() {
-  return(
-    <>
+export default function PostView() {
+  return (
       <div className="post">
         <div className="postPost">
           <h2>포스트</h2>
@@ -23,6 +22,5 @@ export default function PostVeiw() {
           </div>
         </div>
       </div>
-    </>
   );
 }
