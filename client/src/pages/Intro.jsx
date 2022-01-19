@@ -55,12 +55,15 @@ const IntroDesc = styled.div`
 const Title = styled.h1`
   font-size: 2rem;
   margin-bottom: 1rem;
+  color: ${({ theme }) => theme.color.navy};
 `;
 
 const SubText = styled.p`
   color: ${({ theme }) => theme.color.navy};
   font-size: 1.25rem;
   font-weight: 500;
+  text-align: center;
+  line-height: 1.5rem;
 `;
 
 const StartBtn = styled(ColorBtn)`
@@ -68,6 +71,7 @@ const StartBtn = styled(ColorBtn)`
   height: 4rem;
   border-radius: 0.05rem;
   font-size: 2rem;
+  font-weight: 500;
   margin-top: 1rem;
 `;
 
@@ -81,7 +85,11 @@ export default function Intro() {
           </IntroImg>
           <IntroDesc>
             <Title>세대간 궁금했던 이야기를 질문해보세요</Title>
-            <SubText>받는 나이대를 정해 질문을 올릴 수 있어요</SubText>
+            <SubText>
+              받는 나이대를 정해 질문을 올릴 수 있어요
+              <br />
+              평소 다른 세대에게 궁금했던 점을 태그를 이용해 질문해보세요
+            </SubText>
           </IntroDesc>
         </Content>
       </Section>
@@ -89,7 +97,10 @@ export default function Intro() {
         <Content>
           <IntroDesc>
             <Title>답변하고싶은 질문들이 있나요?</Title>
-            <SubText>우리 세대에게 온 질문들에 답변할 수 있어요</SubText>
+            <SubText>
+              우리 세대에게 온 질문들에 답변할 수 있어요 <br />
+              댓글 기능으로 답변을 남겨주세요
+            </SubText>
           </IntroDesc>
           <IntroImg marginLeft='9rem'>
             <img src='/asset/img3.png' alt='section이미지3' />
