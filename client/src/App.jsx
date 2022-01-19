@@ -1,5 +1,5 @@
 import React from "react";
-import Intro from './pages/Intro';
+import Intro from "./pages/Intro";
 import MainPage from "./pages/MainPage";
 import SignupPage from "./pages/SignupPage";
 import PostsPage from "./pages/PostsPage";
@@ -12,27 +12,27 @@ import NotFound from "./pages/NotFound";
 import { Routes, Route } from "react-router-dom";
 import NavBar from "./components/common/NavBar";
 
-function App() {
+function App({ loginId }) {
   return (
     <>
       <NavBar />
       <Routes>
-        <Route path="/intro" element={<Intro />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/" element={<MainPage />} />
-        <Route path="/posts" element={<PostsPage />} />
+        <Route path="/intro" element={<Intro loginId={loginId}/>} />
+        <Route path="/signup" element={<SignupPage loginId={loginId}/>} />
+        <Route path="/" element={<MainPage loginId={loginId}/>} />
+        <Route path="/posts" element={<PostsPage loginId={loginId} />} />
         <Route
           path="/posts/view/:id"
-          element={<PostVeiw />}
+          element={<PostVeiw loginId={loginId}/>}
         />
         <Route
           path="/posts/create"
-          element={<PostCreate />}
+          element={<PostCreate loginId={loginId}/>}
         />
-        <Route path="/posts/edit" element={<PostEdit />} />
-        <Route path="/my" element={<MyPage />} />
-        <Route path="/loading" element={<LoadingPage />} />
-        <Route path="/notfound" element={<NotFound />} />
+        <Route path="/posts/edit" element={<PostEdit loginId={loginId}/>} />
+        <Route path="/my" element={<MyPage loginId={loginId}/>} />
+        <Route path="/loading" element={<LoadingPage loginId={loginId}/>} />
+        <Route path="/notfound" element={<NotFound loginId={loginId}/>} />
       </Routes>
     </>
   );

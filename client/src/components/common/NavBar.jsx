@@ -1,119 +1,126 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { useLocation } from 'react-router';
+import { useSelector } from 'react-redux';
 import Toggle from './Toggle';
+import LoginSection from '../login/LoginSection';
+import MobileNavBar from './MobileNavBar';
 
 const NavContainer = styled.nav`
-    width: 100vw;
-    height: 10vh;
-    position: fixed;
-    top: 0%;
-    left: 0%;
+  width: 100vw;
+  height: 10vh;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background-color: white;
 `;
 
 const NavBox = styled.div`
-    width: 90%;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  width: 95%;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const NavLogo = styled.div`
-    width: 30%;
-    height: 100%;
-    display: flex;
-    align-items: center;
+  margin-left: 10px;
 `;
 
 const NavTitle = styled(Link)`
-    font-size: 28px;
-    color: ${({theme}) => theme.color.yellow};
-    text-decoration: none;
+  font-size: 28px;
+  color: ${({theme}) => theme.color.yellow};
+  text-decoration: none;
+  @media screen and (max-width: 320px){
+    font-size: 20px;
+  }
 `;
 
 const NavLists = styled.ul`
-    width: 70%;
-    height: 100%;
-    display: grid;
-    grid-template-columns: repeat(7, 13%);
-    grid-gap: 1.5%;
-    align-items: center;
-    @media screen and (max-width: 1200px) {
-        grid-template-columns: 13% 13% 13% 13% 13% 13% 20%;
-    }
-    @media ${({theme}) => theme.device.mobile} {
-        display: none;
-    }
+  width: 70%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(7, auto);
+  grid-gap: 1.5%;
+  align-items: center;
+  @media screen and (max-width: 992px) {
+    grid-template-columns: 75px 75px 75px 75px 75px 75px 150px;
+  }
+  @media ${({theme}) => theme.device.ipad} {
+    display: none;
+  }
 `;
 
 const NavList = styled.li`
-    height: 50%;
-    display: flex;
-    align-items: center;
-    &:last-child {
-        font-weight: bold;
-    };
+  padding-left: 5px;
 `;
 
 const ListLink = styled(Link)`
-    font-size: 18px;
-    text-decoration: none;
-    color: ${({theme}) => theme.color.gray};
-    &:hover {
-        font-weight: bold;
-    }
-    padding-bottom: 5px;
-    border-bottom: 2px solid ${({current, theme}) => current ? `${theme.color.lightGray}` : "transparent"};
-    @media screen and (max-width: 992px) {
-        font-size: 15px;
-    }
+  font-size: 17px;
+  text-decoration: none;
+  color: ${({theme}) => theme.color.gray};
+  &:hover {
+    font-weight: bold;
+  }
+  padding-bottom: 5px;
+  font-weight: ${({current}) => current ? `bold` : `none`};
+  border-bottom: 2px solid ${({current, theme}) => current ? `${theme.color.lightGray}` : "transparent"};
 `;
 
-const SignLink = styled(ListLink)`
-    color: ${({theme}) => theme.color.black};
-    @media screen and (max-width: 992px) {
-        font-size: 15px;
-    }
+const SignLink = styled.span`
+  font-size: 18px;
+  color: ${({theme}) => theme.color.black};
+  font-weight: bold;
+  cursor: pointer;
 `;
 
 function NavBar () {
-    const {pathname} = useLocation(null);
-    return (
-        <NavContainer>
-            <NavBox>
-                <NavLogo>
-                    <NavTitle to="/"> 스며들다 </NavTitle>
-                </NavLogo>
-                <NavLists>
-                    <NavList>
-                        <ListLink to="/10generation" current={pathname === "/10generation"}> 10대에게 </ListLink>
-                    </NavList>
-                    <NavList>
-                        <ListLink to="/20generation" current={pathname === "/20generation"}> 20대에게 </ListLink>
-                    </NavList>
-                    <NavList>
-                        <ListLink to="/30generation" current={pathname === "/30generation"}> 30대에게 </ListLink>
-                    </NavList>
-                    <NavList>
-                        <ListLink to="/40generation" current={pathname === "/40generation"}> 40대에게 </ListLink>
-                    </NavList>
-                    <NavList>
-                        <ListLink to="/50generation" current={pathname === "/50generation"}> 50대에게 </ListLink>
-                    </NavList>
-                    <NavList>
-                        <ListLink to="/60generation" current={pathname === "/60generation"}> 60대에게 </ListLink>
-                    </NavList>
-                    <NavList>
-                        <SignLink to="/"> 로그인/회원가입 </SignLink>
-                    </NavList>
-                </NavLists>
-                <Toggle />
-            </NavBox>
-        </NavContainer>
-    );
+  const {pathname} = useLocation(null);
+  const [loginModal, setLoginModal] = useState(false);
+  const isToggled = useSelector((state) => state.toggleReducer.isToggled);
+  const handleLoginModal = () => {
+    setLoginModal(!loginModal);
+  }
+
+  return (
+    <>
+      <NavContainer>
+        <NavBox>
+          <NavLogo>
+            <NavTitle to="/"> 스며들다 </NavTitle>
+          </NavLogo>
+          <NavLists>
+            <NavList>
+              <ListLink to="/post/view/generation10" current={pathname === "/post/view/generation10"}> 10대에게 </ListLink>
+            </NavList>
+            <NavList>
+              <ListLink to="/post/view/generation20" current={pathname === "/post/view/generation20"}> 20대에게 </ListLink>
+            </NavList>
+            <NavList>
+              <ListLink to="/post/view/generation30" current={pathname === "/post/view/generation30"}> 30대에게 </ListLink>
+            </NavList>
+            <NavList>
+              <ListLink to="/post/view/generation40" current={pathname === "/post/view/generation40"}> 40대에게 </ListLink>
+            </NavList>
+            <NavList>
+              <ListLink to="/post/view/generation50" current={pathname === "/post/view/generation50"}> 50대에게 </ListLink>
+            </NavList>
+            <NavList>
+              <ListLink to="/post/view/generation60" current={pathname === "/post/view/generation60"}> 60대에게 </ListLink>
+            </NavList>
+            <NavList>
+              <SignLink onClick={handleLoginModal}> 로그인/회원가입 </SignLink>
+            </NavList>
+          </NavLists>
+          <Toggle />
+        </NavBox>
+      </NavContainer>
+      {loginModal && <LoginSection />}
+      {isToggled && <MobileNavBar />}
+    </>
+  );
 }
 
 export default NavBar;
