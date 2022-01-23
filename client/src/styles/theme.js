@@ -16,5 +16,8 @@ export const theme = {
 
   device: {
     mobile: `screen and (max-width: 767px)`,
-  },
+    ipad: `screen and (max-width: 769px)`,
+    iphoneSE: `screen and (min-width: 320px)`,
+    fold: `screen and (max-width: 280px)`
+  }
 };
