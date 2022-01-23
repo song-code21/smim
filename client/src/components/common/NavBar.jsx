@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import { useLocation } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { loginOpen } from '../../redux/toggle/action';
 import Toggle from './Toggle';
 import LoginSection from '../login/LoginSection';
 import MobileNavBar from './MobileNavBar';
@@ -14,6 +15,7 @@ const NavContainer = styled.nav`
   top: 0%;
   left: 0%;
   background-color: white;
+  box-shadow: rgb(0 0 0 / 50%) 0 16px 16px -16px;
 `;
 
 const NavBox = styled.div`
@@ -42,12 +44,9 @@ const NavLists = styled.ul`
   width: 70%;
   height: 100%;
   display: grid;
-  grid-template-columns: repeat(7, auto);
+  grid-template-columns: 110px 110px 110px 110px 110px 110px 150px;
   grid-gap: 1.5%;
   align-items: center;
-  @media screen and (max-width: 992px) {
-    grid-template-columns: 75px 75px 75px 75px 75px 75px 150px;
-  }
   @media ${({theme}) => theme.device.ipad} {
     display: none;
   }
@@ -78,10 +77,11 @@ const SignLink = styled.span`
 
 function NavBar () {
   const {pathname} = useLocation(null);
-  const [loginModal, setLoginModal] = useState(false);
-  const isToggled = useSelector((state) => state.toggleReducer.isToggled);
+  const menuToggled = useSelector((state) => state.toggleReducer.menuToggled);
+  const loginToggled = useSelector((state) => state.toggleReducer.loginToggled);
+  const dispatch = useDispatch();
   const handleLoginModal = () => {
-    setLoginModal(!loginModal);
+    dispatch(loginOpen());
   }
 
   return (
@@ -117,8 +117,8 @@ function NavBar () {
           <Toggle />
         </NavBox>
       </NavContainer>
-      {loginModal && <LoginSection />}
-      {isToggled && <MobileNavBar />}
+      {loginToggled && <LoginSection />}
+      {menuToggled && <MobileNavBar />}
     </>
   );
 }

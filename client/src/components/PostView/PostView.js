@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function PostView() {
+export default function PostView () {
   return (
       <div className="post">
         <div className="postPost">

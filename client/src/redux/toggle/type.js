@@ -1,2 +1,4 @@
-export const TOGGLE_OPEN = 'TOGGLE_OPEN';
-export const TOGGLE_CLOSE = 'TOGGLE_CLOSE';
+export const MENU_OPEN = 'MENU_OPEN';
+export const MENU_CLOSE = 'MENU_CLOSE';
+export const LOGIN_OPEN = 'LOGIN_OPEN';
+export const LOGIN_CLOSE = 'LOGIN_CLOSE';

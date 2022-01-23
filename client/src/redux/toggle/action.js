@@ -1,19 +1,37 @@
-import {TOGGLE_OPEN, TOGGLE_CLOSE} from './type';
+import {MENU_OPEN, MENU_CLOSE, LOGIN_OPEN, LOGIN_CLOSE} from './type';
 
-export const toggleOpen = () => {
+export const menuOpen = () => {
   return {
-    type: TOGGLE_OPEN,
+    type: MENU_OPEN,
     payload: {
-      isToggled: true,
+      menuToggled: true,
     },
   };
 };
 
-export const toggleClose = () => {
+export const menuClose = () => {
   return {
-    type: TOGGLE_CLOSE,
+    type: MENU_CLOSE,
     payload: {
-      isToggled: false,
+      menuToggled: false,
     }
   }
+}
+
+export const loginOpen = () => {
+  return {
+    type: LOGIN_OPEN,
+    payload: {
+      loginToggled: true,
+    },
+  };
+}
+
+export const loginClose = () => {
+  return {
+    type: LOGIN_CLOSE,
+    payload: {
+      loginToggled: false,
+    },
+  };
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import { useDispatch } from 'react-redux';
+import { loginClose } from '../../redux/toggle/action';
 
 /* 
 1. 리덕스를 활용해서 LoginModal 값 관리
@@ -27,13 +29,19 @@ const CancelBtn = styled.button`
   height: 50px;
   text-align: center;
   font-size: 20px;
+  cursor: pointer;
 `;
 
 function LoginHeader () {
+  const dispatch = useDispatch();
+
+  const handleLoginClose = () => {
+    dispatch(loginClose());
+  }
   return (
     <Header>
       <LoginTitle> 스며들다 </LoginTitle>
-      <CancelBtn> ❌ </CancelBtn>
+      <CancelBtn onClick={handleLoginClose}> ❌ </CancelBtn>
     </Header>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
-import PostView from "../components/PostView"
-import NavBar from '../components/common'
+import PostView from "../components/PostView/PostView";
+import NavBar from '../components/common/NavBar';
 
 export default function PostVeiw() {
   return(
