@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import PostTargetAge from "../components/post/PostTargetAge";
 import Posteditor from "../components/post/posteditor";
@@ -19,28 +19,6 @@ import PostTag from "../components/post/PostTag";
 export default function PostCreate() {
 
 
-  const [postTitle, setPostTitle] = useState("")
-  const [postAge, setPostAge] = useState('');
-  const [postContent, setPostContent] = useState('');
-
-
-  const titlehandler = (e) => {
-    setPostTitle(e.target.value)
-  }
-  
-  const agehandler = (e) => {
-    setPostAge(e.target.value);
-  }
-
-  const contenthandler = (e) => {
-    setPostContent(e.target.value);
-  }
-
-  const body = { postTitle, postAge, postContent };
-
-  console.log(body)
-  
-
   const PostHeader = styled.div`
     position: relative;
     width: 140px;
@@ -58,10 +36,10 @@ export default function PostCreate() {
   return (
     <PostCreateContainer>
       <PostHeader> 질문하기 </PostHeader>
-      <PostTitle titlehandler={titlehandler} postTitle={postTitle} />
-      <PostTargetAge agehandler={agehandler} />
+      <PostTitle />
+      <PostTargetAge />
       <PostTag/>
-      <Posteditor contenthandler={contenthandler} />
+      <Posteditor />
       <PostBottomBtn />
     </PostCreateContainer>
   );
