@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom';
 import { ColorBtn } from '../../styles/common/buttons';
 
 export const FormBox = styled.form`
-  width: 50%;
-  height: 75%;
+  width: 100%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 12px;
   box-sizing: border-box;
+  margin-top: 40px;
 `;
 
 const Label = styled.label`
@@ -31,31 +32,27 @@ const Input = styled.input`
 `;
 
 const FindIdPwd = styled.span`
-  font-size: 15px;
+  font-size: 13px;
   font-weight: bold;
   cursor: pointer;
-  align-self: flex-end;
-  padding-right: 20px;
 `;
 
 const SignBox = styled.div`
-  align-self: flex-end;
-  padding-right: 20px;
 `;
 
 const SignText = styled.span`
-  font-size: 14px;
+  font-size: 13px;
   color: ${({theme}) => theme.color.gray};
 `;
 
 const SignLink = styled(Link)`
-  font-size: 16px;
+  font-size: 15px;
   color: ${({theme}) => theme.color.black};
   font-weight: bold;
 `;
 
 const LoginBtn = styled(ColorBtn)`
-  width: 100px;
+  width: 120px;
   height: 30px;
   background-color: #FFC306;
   font-weight: bold;
@@ -63,7 +60,7 @@ const LoginBtn = styled(ColorBtn)`
   border: none;
   border-radius: 5px;
   font-size: 16px;
-  margin: 20px 20px 0 0;
+  margin: 0 20px 10px 0;
 `;
 
 const ValidCheck = styled.span`
@@ -72,6 +69,7 @@ const ValidCheck = styled.span`
   color: red;
   align-self: flex-end;
   padding-right: 20px;
+  margin-top: 5px;
 `;
 
 function EmailForm () {
@@ -83,12 +81,12 @@ function EmailForm () {
       <Label> 비밀번호 </Label>
       <Input type="password" placeholder='비밀번호를 입력하세요.'/>
       <ValidCheck> 비밀번호가 올바르지 않습니다. </ValidCheck>
-      <FindIdPwd> 혹시 아이디와 비밀번호를 잊어버리셨나요? </FindIdPwd>
+      <LoginBtn> 로그인 </LoginBtn>
       <SignBox>
         <SignText> 아직 회원이 아니신가요? </SignText>
         <SignLink to="/signup"> 회원가입 </SignLink>
       </SignBox>
-      <LoginBtn> 로그인 </LoginBtn>
+      <FindIdPwd> 혹시 아이디와 비밀번호를 잊어버리셨나요? </FindIdPwd>
     </FormBox>
   );
 }

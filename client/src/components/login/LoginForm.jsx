@@ -4,10 +4,9 @@ import EmailForm from './EmailForm';
 import SocialForm from './SocialForm';
 
 const LoginBox = styled.div`
-  width: 100%;
+  width: 90%;
   height: 90%;
-  display: flex;
-  align-items: center;
+  margin: 0 auto;
 `;
 
 function LoginForm () {

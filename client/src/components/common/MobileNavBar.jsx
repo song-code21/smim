@@ -2,27 +2,21 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 import {useDispatch} from 'react-redux';
-import {toggleClose} from '../../redux/toggle/action';
-
-
-const MobileNavOverlay = styled.div`
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(12, 12, 12, 0.1);
-  display: none;
-  @media ${({theme}) => theme.device.ipad} {
-    display: flex;
-    justify-content: flex-end;
-  }
-`;
+import {menuClose} from '../../redux/toggle/action';
 
 const MobileNavBox = styled.section`
-  width: 45%;
-  height: 100%;
+  width: 45vw;
+  height: 100vh;
   position: fixed;
   top: 10%;
   right: 0;
   background-color: white;
+  display: none;
+  @media ${({theme}) => theme.device.ipad} {
+    display: flex;
+    justify-content: flex-end;
+    box-shadow: rgb(0 0 0 / 50%) -16px 0px 16px -16px
+  }
 `;
 
 const MobileLists = styled.ul`
@@ -115,12 +109,11 @@ function MobileNavBar () {
   const [test, setTest] = useState(true);
   const dispatch = useDispatch();
   const handleToggle = () => {
-    dispatch(toggleClose());
+    dispatch(menuClose());
     setTest(!test);
   }
   return (
-    <MobileNavOverlay>
-      <MobileNavBox>
+    <MobileNavBox>
         <MobileLists>
           <MobileList>
             {test ? (
@@ -152,8 +145,7 @@ function MobileNavBar () {
             <MobileLink to="/post/view/generation60"> 60대에게 </MobileLink>
           </MobileList>
         </MobileLists>
-      </MobileNavBox>
-    </MobileNavOverlay>
+    </MobileNavBox>
   );
 }
 
