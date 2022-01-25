@@ -1,5 +1,7 @@
-import React from 'react'
+import React  from 'react'
 import styled from 'styled-components';
+import { useDispatch, useSelector } from 'react-redux';
+import { targetAgeAdd } from '../../redux/post/action';
 
 // PostTargetAge가 onChange할 때마다 focus를 잃는 현상 때문에 밖에 배치
 const TargetWrap = styled.div`
@@ -19,13 +21,20 @@ const TargetAgeInput = styled.select`
 `;
 
 
-function PostTargetAge(props) {
+function PostTargetAge() {
 
-  const { agehandler } = props
+    const dispatch = useDispatch();
+    const targetAge = useSelector((state) => state.postReducer.targetAge);
+
+    const titleHandler = (e) => {
+      dispatch(targetAgeAdd(e.target.value));
+    };
+  
+    console.log(targetAge);
 
 	return (
     <TargetWrap>
-      <TargetAgeInput palette='yellow' onChange={agehandler}>
+      <TargetAgeInput palette='yellow' onChange={titleHandler}>
         <option value='' selected>
           질문하고 싶은 연령층을 선택해주세요.
         </option>

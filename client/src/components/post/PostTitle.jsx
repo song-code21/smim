@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useDispatch, useSelector } from 'react-redux';
+import { titleAdd } from '../../redux/post/action';
 
 
 // PostTitle onChange할 때마다 focus를 잃는 현상 때문에 밖에 배치
@@ -19,19 +21,19 @@ const TitleInput = styled.input`
 `;
 
 
-function PostTitle(props) {
+function PostTitle() {
 
-  const { titlehandler, postTitle } = props;
-  
+  const dispatch = useDispatch();
+  const title = useSelector((state)=> state.postReducer.title)
+
+  const titleHandler = (e) => {
+      dispatch(titleAdd(e.target.value))
+  }
+  console.log(title)
 
     return (
       <TitleWrap>
-        <TitleInput
-          value={postTitle}
-          placeholder='제목'
-          palette='yellow'
-          onChange={titlehandler}
-        />
+        <TitleInput placeholder='제목' palette='yellow' onChange={titleHandler} value={title}/>
       </TitleWrap>
     );
 }
