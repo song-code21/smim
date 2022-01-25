@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 import { ColorBtn } from '../../styles/common/buttons';
 
 export const FormBox = styled.form`
-  width: 50%;
-  height: 70%;
+  width: 100%;
+  height: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
   box-sizing: border-box;
-  border-right: 1px solid rgba(12, 12, 12, .3);
+  margin-top: 40px;
 `;
 
 const Label = styled.label`
@@ -35,11 +35,9 @@ const FindIdPwd = styled.span`
   font-size: 13px;
   font-weight: bold;
   cursor: pointer;
-  padding-right: 20px;
 `;
 
 const SignBox = styled.div`
-  padding-right: 20px;
 `;
 
 const SignText = styled.span`
@@ -54,7 +52,7 @@ const SignLink = styled(Link)`
 `;
 
 const LoginBtn = styled(ColorBtn)`
-  width: 100px;
+  width: 120px;
   height: 30px;
   background-color: #FFC306;
   font-weight: bold;

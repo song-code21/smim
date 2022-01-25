@@ -4,22 +4,26 @@ import { Link } from 'react-router-dom';
 import { FormBox } from './EmailForm';
 
 const SocialFormBox = styled(FormBox)`
-  height: 65%;
+  width: 70%;
+  height: 20%;
+  display: flex;
   justify-content: center;
-  gap: 30px;
+  flex-direction: row;
   border: none;
+  margin: 0 auto;
+  border-top: 1px solid rgba(12, 12, 12, .3);
 `;
 
 const KaKaoLink = styled(Link)`
-  width: 80%;
-  height: 50px;
+  width: 60px;
+  height: 60px;
   background-color: ${({theme}) => theme.color.yellow};
   text-align: center;
-  line-height: 50px;
+  line-height: 60px;
   font-size: 20px;
   color: white;
   text-decoration: none;
-  border-radius: 5px;
+  border-radius: 10px;
   &:hover {
     text-decoration: underline;
     font-size: 21.5px;
@@ -35,10 +39,8 @@ const GoogleLink = styled(KaKaoLink)`
 function SocialForm () {
   return (
     <SocialFormBox>
-      <KaKaoLink to="/"> Naver </KaKaoLink>
+      <KaKaoLink to="/"> KaKao </KaKaoLink>
       <GoogleLink to="/"> Google </GoogleLink>
-      <KaKaoLink to="/"> Facebook </KaKaoLink>
-      <KaKaoLink to="/"> Facebook </KaKaoLink>
     </SocialFormBox>
   );
 }

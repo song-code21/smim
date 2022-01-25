@@ -15,7 +15,7 @@ const NavContainer = styled.nav`
   top: 0%;
   left: 0%;
   background-color: white;
-  box-shadow: rgb(0 0 0 / 50%) 0 16px 16px -16px;
+  box-shadow: rgb(0 0 0 / 50%) 0 -3px 16px 1px;
 `;
 
 const NavBox = styled.div`
@@ -47,6 +47,9 @@ const NavLists = styled.ul`
   grid-template-columns: 110px 110px 110px 110px 110px 110px 150px;
   grid-gap: 1.5%;
   align-items: center;
+  @media screen and (max-width: 1065px) {
+    grid-template-columns: 80px 80px 80px 80px 80px 80px 150px;
+  }
   @media ${({theme}) => theme.device.ipad} {
     display: none;
   }

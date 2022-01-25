@@ -24,8 +24,8 @@ const LoginOverlay = styled.div`
 `;
 
 const LoginBox = styled.section`
-  width: 60%;
-  height: 65%;
+  width: 40%;
+  height: 80%;
   position: absolute;
   left: 50%;
   top: 50%;
