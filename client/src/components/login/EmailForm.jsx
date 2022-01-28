@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { ValidCheck } from '../../styles/common/validtext';
 import { ColorBtn } from '../../styles/common/buttons';
+import { useDispatch } from 'react-redux';
+import { loginClose } from '../../redux/toggle/action';
 
 export const FormBox = styled.form`
   width: 100%;
@@ -63,28 +66,30 @@ const LoginBtn = styled(ColorBtn)`
   margin: 0 20px 10px 0;
 `;
 
-const ValidCheck = styled.span`
-  font-size: 12px;
-  font-weight: bold;
-  color: red;
+const LoginValid = styled(ValidCheck)`
   align-self: flex-end;
   padding-right: 20px;
   margin-top: 5px;
 `;
 
 function EmailForm () {
+  const dispatch = useDispatch();
+
+  const handleLoginClose = () => {
+    dispatch(loginClose());
+  }
   return (
     <FormBox>
       <Label> 이메일 </Label>
       <Input type="email" placeholder='아이디를 입력하세요.'/>
-      <ValidCheck> 아이디를 다시 확인해주세요. </ValidCheck>
+      <LoginValid> 아이디를 다시 확인해주세요. </LoginValid>
       <Label> 비밀번호 </Label>
       <Input type="password" placeholder='비밀번호를 입력하세요.'/>
-      <ValidCheck> 비밀번호가 올바르지 않습니다. </ValidCheck>
+      <LoginValid> 비밀번호가 올바르지 않습니다. </LoginValid>
       <LoginBtn> 로그인 </LoginBtn>
       <SignBox>
         <SignText> 아직 회원이 아니신가요? </SignText>
-        <SignLink to="/signup"> 회원가입 </SignLink>
+        <SignLink to="/signup" onClick={handleLoginClose}> 회원가입 </SignLink>
       </SignBox>
       <FindIdPwd> 혹시 아이디와 비밀번호를 잊어버리셨나요? </FindIdPwd>
     </FormBox>
