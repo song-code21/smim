@@ -3,7 +3,7 @@ const {
   Model
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
-  class like extends Model {
+  class post_tags extends Model {
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -11,28 +11,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      models.like.belongsTo(models.user, {
-        foreignKey: "user_id",
+      models.post_tags.belongsTo(models.posts, {
+        foreignKey: "post_id",
         sourceKey: "id",
       });
-      models.like.belongsTo(models.post, {
-        foreignKey: "target_id",
-        sourceKey: "id",
-      });
-      models.like.belongsTo(models.comment, {
-        foreignKey: "target_id",
+      models.post_tags.belongsTo(models.tags, {
+        foreignKey: "tag_id",
         sourceKey: "id",
       });
     }
   }
-  like.init(
-    {
-      target_type: DataTypes.INTEGER
-    },
+  post_tags.init({
+    // 연관관계로 자동 생성
+  }
+    ,
     {
       sequelize,
-      modelName: "like",
+      modelName: "post_tags",
     }
   );
-  return like;
+  return post_tags;
 };
