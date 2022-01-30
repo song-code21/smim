@@ -4,7 +4,7 @@ import { Tag } from '../../styles/common/tag';
 
 const PostBox = styled.div`
   width: 794px;
-  margin: 0 auto;
+  margin: 0 auto 70px;
 `;
 
 const PostTitle = styled.h3`

@@ -1,6 +1,6 @@
 import React from 'react';
 import PostPost from '../components/PostView/PostPost';
-// import PostComment from '../components/PostView/PostComment';
+import PostComment from '../components/PostView/PostComment';
 import styled from 'styled-components';
 
 const PostViewContainer = styled.div`
@@ -22,7 +22,7 @@ export default function PostViewPage() {
     <PostViewContainer>
       <PostViewH2>20대에게</PostViewH2>
       <PostPost />
-      {/* <PostComment /> */}
+      <PostComment />
     </PostViewContainer>
   );
 }
