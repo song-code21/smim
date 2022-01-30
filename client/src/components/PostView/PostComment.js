@@ -1,24 +1,77 @@
 import React from 'react';
+import styled from 'styled-components';
 
 export default function PostComment() {
   return (
     <>
-      <div className='postComment'>
-        <h2>답변하기</h2>
-        <input type='text' placeholder='답변을 기다립니다.' />
+      <CommentContainer>
+        <CommentH2>답변하기</CommentH2>
+        <CommentInputBox>
+          <CommentInput type='text' placeholder='답변을 기다립니다.' />
+        </CommentInputBox>
         <div className='comment-box'>
-          <div className='comment-profile'>
-            <img />
+          <CommentProfile>
+            <ProfileImg />
             <span>도기석</span>
-          </div>
+          </CommentProfile>
           <p className='comment-text'>
-            홍콩에 있는 친구 안녕! 여기서 처음 써보는 편지야. 나는 스톡홀름에 사는 17살 학생이야.
-            겹치는 관심사가 너무 많아서 깜짝 놀랐어! 여행 좋아해? 스웨덴에 와 본 적 있니? 언젠가
-            홍콩에 가보고 싶어. 어떤 외국어를 할 수 잇어? 답장 기다릴게!
+            아버지에게 드릴 선물을 고민하고
+            있습니다.닝러니ㅏㅇ러ㅣㄴ아ㅓ린아ㅓ린아ㅓ린아ㅓ린아ㅓ리ㅏㄴ어리ㅏㄴ어리ㅐㅈ댜ㅓ개ㅑㅈ덕;ㅣㅏ젇기;ㅏㅈ덕;ㅣㅏㅈ덜;ㅣㅏㅈ덜;ㅣ
           </p>
           <span className='comment-date'>2022.01.09</span>
         </div>
-      </div>
+      </CommentContainer>
     </>
   );
 }
+
+const CommentContainer = styled.div`
+  width: 794px;
+  height: 59px;
+  margin: 0 auto;
+`;
+
+const CommentH2 = styled.h2`
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 25px;
+  margin-bottom: 16px;
+  &::after {
+    width: 70px;
+    height: 2px;
+    background: #000000;
+    display: block;
+    content: '';
+    margin-top: 9px;
+  }
+`;
+
+const CommentInputBox = styled.div`
+  width: 794px;
+  height: 59px;
+  border: 1px solid #c4c4c4;
+  padding: 5px;
+  margin-bottom: 25px;
+`;
+
+const CommentInput = styled.textarea`
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 13px;
+`;
+
+const CommentProfile = styled.div`
+  display: flex;
+  align-items: center;
+`;
+
+const ProfileImg = styled.img`
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 2px solid #091d3e;
+  margin-right: 11px;
+`;
