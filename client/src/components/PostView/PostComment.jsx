@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DropDown from './CommentDropDown';
 import styled from 'styled-components';
 
 export default function PostComment() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  const handleModalShow = () => {
+    setIsVisible(!isVisible);
+  };
+
   return (
     <>
+      {isVisible ? <DropDown changeVisible={setIsVisible} /> : null}
       <CommentContainer>
         <CommentH2>답변하기</CommentH2>
         <CommentInputBox>
@@ -14,6 +22,7 @@ export default function PostComment() {
             <ProfileImg />
             <span>도기석</span>
           </CommentProfile>
+          <CommentDropDownBtn onClick={handleModalShow} />
           <p className='comment-text'>
             아버지에게 드릴 선물을 고민하고
             있습니다.닝러니ㅏㅇ러ㅣㄴ아ㅓ린아ㅓ린아ㅓ린아ㅓ린아ㅓ리ㅏㄴ어리ㅏㄴ어리ㅐㅈ댜ㅓ개ㅑㅈ덕;ㅣㅏ젇기;ㅏㅈ덕;ㅣㅏㅈ덜;ㅣㅏㅈ덜;ㅣ
@@ -74,4 +83,9 @@ const ProfileImg = styled.img`
   border-radius: 50%;
   border: 2px solid #091d3e;
   margin-right: 11px;
+`;
+
+const CommentDropDownBtn = styled.button`
+  width: 24px;
+  height: 24px;
 `;
