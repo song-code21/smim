@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import CommentItem from './CommentItem';
 
 export default function PostComment() {
   return (
@@ -9,17 +10,10 @@ export default function PostComment() {
         <CommentInputBox>
           <CommentInput type='text' placeholder='답변을 기다립니다.' />
         </CommentInputBox>
-        <div className='comment-box'>
-          <CommentProfile>
-            <ProfileImg />
-            <span>도기석</span>
-          </CommentProfile>
-          <p className='comment-text'>
-            아버지에게 드릴 선물을 고민하고
-            있습니다.닝러니ㅏㅇ러ㅣㄴ아ㅓ린아ㅓ린아ㅓ린아ㅓ린아ㅓ리ㅏㄴ어리ㅏㄴ어리ㅐㅈ댜ㅓ개ㅑㅈ덕;ㅣㅏ젇기;ㅏㅈ덕;ㅣㅏㅈ덜;ㅣㅏㅈ덜;ㅣ
-          </p>
-          <span className='comment-date'>2022.01.09</span>
-        </div>
+        <CommentItemBox>
+          <CommentItem />
+          <CommentItem />
+        </CommentItemBox>
       </CommentContainer>
     </>
   );
@@ -63,15 +57,4 @@ const CommentInput = styled.textarea`
   font-size: 13px;
 `;
 
-const CommentProfile = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const ProfileImg = styled.img`
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  border: 2px solid #091d3e;
-  margin-right: 11px;
-`;
+const CommentItemBox = styled.div``;
