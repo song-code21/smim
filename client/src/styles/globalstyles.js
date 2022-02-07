@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -19,15 +19,21 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
   
-  ul{
+  ul {
     padding: 0;
     margin:0;
   }
 
-  li{
+  li {
     padding: 0;
     margin:0;
     list-style: none;
+  }
+
+  button {
+    border : none;
+    cursor : pointer;
+    background : none;
   }
   
 `;
