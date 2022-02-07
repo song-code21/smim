@@ -1,23 +1,7 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
-import CommentItem from './CommentItem';
-
-export default function PostComment() {
-  return (
-    <>
-      <CommentContainer>
-        <CommentH2>답변하기</CommentH2>
-        <CommentInputBox>
-          <CommentInput type='text' placeholder='답변을 기다립니다.' />
-        </CommentInputBox>
-        <CommentItemBox>
-          <CommentItem />
-          <CommentItem />
-        </CommentItemBox>
-      </CommentContainer>
-    </>
-  );
-}
+import CommentItemBox from './CommentItemBox';
 
 const CommentContainer = styled.div`
   width: 794px;
@@ -57,4 +41,34 @@ const CommentInput = styled.textarea`
   font-size: 13px;
 `;
 
-const CommentItemBox = styled.div``;
+const CommentItemContainer = styled.div``;
+
+export default function PostComment() {
+  const inputRef = useRef(null);
+  const [cmnt, setCmnt] = useState('');
+  const handleTextPrint = (e) => {
+    console.log(inputRef);
+    setCmnt(e.target.value);
+  };
+
+  return (
+    <>
+      <CommentContainer>
+        <CommentH2>답변하기</CommentH2>
+        <CommentInputBox>
+          <CommentInput
+            type='text'
+            placeholder='답변을 기다립니다.'
+            ref={inputRef}
+            onChange={handleTextPrint}
+            value={cmnt}
+          />
+        </CommentInputBox>
+        <CommentItemContainer>
+          <CommentItemBox setCmnt={setCmnt} />
+          <CommentItemBox setCmnt={setCmnt} />
+        </CommentItemContainer>
+      </CommentContainer>
+    </>
+  );
+}

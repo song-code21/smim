@@ -1,15 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function DropDown() {
-  const handleCommentEdit = () => {
+function DropDown({ handleDropDownShow }, ref) {
+  const handleCommentEdit = (e) => {
+    e.preventDefault();
     console.log('edit');
+    // handleDropDownShow();
   };
-  const handleCommentDel = () => {
+  const handleCommentDel = (e) => {
+    e.preventDefault();
+
     console.log('del');
+    // handleDropDownShow();
   };
   return (
-    <DropDownContainer>
+    <DropDownContainer ref={ref}>
       <DropDownBox>
         <DropDownBtn onClick={handleCommentEdit}>수정</DropDownBtn>
         <DropDownBtn onClick={handleCommentDel}>삭제</DropDownBtn>
@@ -17,6 +22,7 @@ export default function DropDown() {
     </DropDownContainer>
   );
 }
+export const CommentDropDown = React.forwardRef(DropDown);
 
 const DropDownContainer = styled.div`
   width: 72px;
